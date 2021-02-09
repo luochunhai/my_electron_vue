@@ -1,23 +1,49 @@
-# my-electron-project
+### electron
+[http://www.electronjs.org/docs/tutorial/quick-start](http://www.electronjs.org/docs/tutorial/quick-start)
+[https://github.com/electron/electron](https://github.com/electron/electron)
 
-> An electron-vue project
+[BrowserWindow](https://cloud.tencent.com/developer/section/1115971)
 
-#### Build Setup
+### electron + vue
+<del>Electron+vue的使用<del>: [https://www.jianshu.com/p/839362c64bdb](https://www.jianshu.com/p/839362c64bdb) 
 
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:9080
-npm run dev
-
-# build electron application for production
-npm run build
-
+**Electron+Vue 项目搭建** : [https://blog.csdn.net/gswwxyhk/article/details/109910009](https://blog.csdn.net/gswwxyhk/article/details/109910009)
 
 ```
+vue init simulatedgreg/electron-vue my-project
+```
 
----
+### electron-vue
+[https://simulatedgreg.gitbooks.io/electron-vue/content/cn/](https://simulatedgreg.gitbooks.io/electron-vue/content/cn/)
+[https://github.com/SimulatedGREG/electron-vue](https://github.com/SimulatedGREG/electron-vue)
+```js
+# Install vue-cli and scaffold boilerplate
+npm install -g vue-cli
+vue init simulatedgreg/electron-vue my-project
 
-This project was generated with [electron-vue](https://github.com/SimulatedGREG/electron-vue)@[45a3e22](https://github.com/SimulatedGREG/electron-vue/tree/45a3e224e7bb8fc71909021ccfdcfec0f461f634) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
-"# my_electron_vue" 
+# Install dependencies and run your app
+cd my-project
+yarn # or npm install
+yarn run dev # or npm run dev
+```
+
+在webpack.renderer.config.js 和 webpack.web.config.js中添加
+```js
+​
+      templateParameters(compilation, assets, options) {
+        return {
+          compilation: compilation,
+          webpack: compilation.getStats().toJson(),
+          webpackConfig: compilation.options,
+          htmlWebpackPlugin: {
+            files: assets,
+            options: options
+          },
+          process,
+        };
+      },
+```
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20210209180147619.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI2MjY3Mzg1,size_16,color_FFFFFF,t_70)
+### electron-vuex
+[https://github.com/vue-electron/vuex-electron](https://github.com/vue-electron/vuex-electron)
+[https://github.com/vue-electron/vuex-electron-example](https://github.com/vue-electron/vuex-electron-example)
